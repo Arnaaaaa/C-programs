@@ -1,0 +1,21 @@
+name: Build and Run C Program
+
+on:
+  push:
+    branches: [ main ]  # Change "main" if your default branch is different
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install GCC
+        run: sudo apt-get update && sudo apt-get install -y gcc
+
+      - name: Compile the program
+        run: gcc program.c -o program
+
+      - name: Run the program
+        run: ./program
